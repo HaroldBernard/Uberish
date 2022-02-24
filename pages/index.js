@@ -1,6 +1,6 @@
 
 import Map from '../components/map';
-import Wrapper from "../tsComponents/wrapper";
+import MainScreenWrapper from "../tsComponents/mainScreenWrapper";
 import ActionItems from "../tsComponents/actionItems";
 import Logo from "../components/uberlog";
 import Header from "../tsComponents/header";
@@ -14,13 +14,13 @@ import Link from 'next/link';
 
 export default function Home() {
     return (
-      <Wrapper>
+      <MainScreenWrapper>
           <Map />
           <ActionItems>
-              <Header>
+              <Header style={{justifyContent: "space-between"}}>
                   <Logo/>
                   <Profile>
-                      <User user="harold"/>
+                      <User user="Harold"/>
                       <UserImage src="https://cdn.pixabay.com/photo/2020/08/18/12/19/dog-5498086_1280.png"/>
                   </Profile>
               </Header>
@@ -31,18 +31,20 @@ export default function Home() {
                         Ride
                     </ActionButton>
                 </Link>
+                <Link href="/search">
+                    <ActionButton>
+                        <ActionButtonImg pic="https://i.ibb.co/n776JLm/bike.png"/>
+                        Wheels
+                    </ActionButton>
+                </Link>
                 <ActionButton>
-                    <ActionButtonImg pic="https://cdn-icons-png.flaticon.com/512/732/732944.png"/>
-                    Wheels
-                </ActionButton>
-                <ActionButton>
-                    <ActionButtonImg pic="https://cdn-icons-png.flaticon.com/512/747/747310.png"/>
+                    <ActionButtonImg pic="https://i.ibb.co/5RjchBg/uberschedule.png"/>
                     Schedule
                 </ActionButton>
               </ActionButtons>
           </ActionItems>
-          <Input/>
-      </Wrapper>
+          <Input placeholder="Where to?"/>
+      </MainScreenWrapper>
     )
   }
 

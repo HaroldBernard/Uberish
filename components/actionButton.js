@@ -7,7 +7,7 @@ h-3/5
 `
 const ActionButtonImg = (props) => {
   return (
-        <ActionButtonImage src={props.pic}/>
+    <ActionButtonImage src={props.pic}/>
   )
 }
 

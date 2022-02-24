@@ -4,9 +4,10 @@ import tw from "tailwind-styled-components"
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiaGIyOCIsImEiOiJja3p5eG81OHUwNHgzM2pxd3hydjJpc3plIn0.ZQFIBlRJxOpT_ZRbRatRqQ';
 const Wrapper = tw.div`
-flex-1
+flex-1 h-1/2
 `
-function Map() {
+function Map(props) {
+    console.log(props)
     useEffect(() => {
         const map = new mapboxgl.Map({
             container: 'map',
@@ -14,7 +15,26 @@ function Map() {
             center: [-100, 40],
             zoom: 3
         });
-    });
+        if (props.pickup) {
+            addToMap(map, props.pickup) 
+        }
+        if (props.dropoff) {
+            addToMap(map, props.dropoff) 
+        }
+        if (props.pickup && props.dropoff) {
+            map.fitBounds([
+                props.dropoff,
+                props.pickup
+            ],  {padding: 60}
+            )
+        }
+    }, [props.pickup, props.dropoff]);
+
+    const addToMap = (map, coordinates) => {
+        const marker1 = new mapboxgl.Marker()
+        .setLngLat(coordinates)
+        .addTo(map)
+    }
 
    return <Wrapper id='map'></Wrapper>
    
